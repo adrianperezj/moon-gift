@@ -1,0 +1,8 @@
+<h1>Event <%= @event.name %> </h1>
+<p>Here you can see the list of gifts we want.</p>
+
+<% @event.gifts.each do |gift| %>
+  <h2><%= gift.name %></h2>
+  <p><li><%= gift.description %></li></p>
+  <p><li><%= gift.price %><li></p>
+<% end %>

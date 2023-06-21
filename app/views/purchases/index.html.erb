@@ -1,0 +1,8 @@
+<h1>My purchases</h1>
+
+<ul>
+  <% @purchases.each do |purchase| %>
+    <li><%= purchase.gift.name %></li>
+    <li><%= purchase.gift.price %></li>
+  <% end %>
+</ul>

@@ -6,8 +6,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
     @event.user = @user
+    @event = Event.new(event_params)
     @event.event_code = generate_event_code
 
     if @event.save

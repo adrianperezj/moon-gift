@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+  resources :users do
+    resources :events
+  end
+
   resources :events do
     resources :gifts, only: [:show,:index,:new, :create]
   end

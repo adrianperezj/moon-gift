@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_user, only: [:new]
+  before_action :set_user, only: [:new, :create]
 
   def new
     @event = Event.new
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date)
+    params.require(:event).permit(:name, :date, :event_code)
   end
 
   def generate_event_code

@@ -1,3 +1,31 @@
 <h1><%= @event.name %></h1>
 <p>Date: <%= @event.date %></p>
 <p>Event Code: <%= @event.event_code %></p>
+
+<h2>Gifts</h2>
+<% if @event.gifts.any? %>
+  <div class="row">
+    <% @event.gifts.each do |gift| %>
+      <div class="col-md-4">
+        <div class="card">
+          <% if gift.photo.attached? %>
+            <%= image_tag gift.photo, class: "card-img-top" %>
+          <% else %>
+            <%= image_tag "placeholder-image.jpg", class: "card-img-top" %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= gift.name %></h5>
+            <p class="card-text"><%= gift.description %></p>
+            <p class="card-text">Price: <%= gift.price %></p>
+            <%= link_to 'Buy Gift', new_purchase_path(gift_id: gift.id), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No gifts available.</p>
+<% end %>
+
+<%= link_to 'Create Gift', new_event_gift_path(@event), class: 'btn btn-primary' %>
+<%= link_to 'Back to Home', root_path, class: 'btn btn-primary' %>

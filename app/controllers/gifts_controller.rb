@@ -1,12 +1,10 @@
 class GiftsController < ApplicationController
   before_action :set_event, only: [:index, :new, :create]
 
-  def index
-    @gifts = Gift.all
-  end
+# Adrian quitamos el index de gifts porque no lo necesitamos, ya que los gifts se muestran en el show de events.
 
   def new
-    @gift = Gift.new(gift_params)
+    @gift = Gift.new
   end
 
   def create
@@ -17,7 +15,6 @@ class GiftsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   private

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_user, only: [:new, :create]
+  before_action :set_user, only: %i[new create]
 
   def new
     @event = Event.new
@@ -17,6 +17,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def show
+    @event = Event.find(params[:id])
+    @gifts = @event.gifts
+  end
+
   private
 
   def set_user
@@ -25,7 +30,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date, :event_code)
+    params.require(:event).permit(:name, :date, :message, :event_code)
   end
 
   def generate_event_code

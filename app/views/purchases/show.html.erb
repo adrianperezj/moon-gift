@@ -1,11 +1,10 @@
-<h1>My purchases</h1>
+<h1>Your purchase was successful!</h1>
 
 <h2><%= @event.name %></h2>
 <p><%= @event.date %></p>
 
-  <% @purchases.each do |purchase| %>
-    <%= purchase.gift.name %>
-    <%= purchase.gift.price %>
-    <%= @purchase.payment_method %>
-    <%= @purchase.total %>
-  <% end %>
+<%= @purchase.gift.name %>
+<%= @purchase.total %>
+<%= @purchase.payment_method %>
+
+<%= link_to "Back to event", user_event_path(current_user, @event) %>

@@ -17,7 +17,7 @@
             <h5 class="card-title"><%= gift.name %></h5>
             <p class="card-text"><%= gift.description %></p>
             <p class="card-text">Price: <%= gift.price %></p>
-            <%= link_to 'Buy Gift', new_purchase_path(gift_id: gift.id), class: 'btn btn-primary' %>
+            <%= link_to 'Buy Gift', new_event_gift_purchase_path(@event, gift), class: 'btn btn-primary' %>
           </div>
         </div>
       </div>

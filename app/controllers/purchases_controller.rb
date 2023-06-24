@@ -1,6 +1,8 @@
 class PurchasesController < ApplicationController
-  before_action :set_user, only: %i[new create]
-  before_action :set_gift, only: %i[new create]
+  # before_action :set_user, only: %i[new create]
+  before_action :set_gift, only: %i[new create show]
+  before_action :set_event, only: %i[new create show]
+
 
   def index
     @purchases = Purchase.where(user: current_user).group(:event)
@@ -19,9 +21,11 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase = Purchase.new(purchase_params)
-    @purchase.user = @user
+    @purchase.user = current_user
+    @purchase.gift = @gift
+    @purchase.total = @gift.price
     @purchase.save
-    redirect_to purchase_path(@purchase)
+    redirect_to event_gift_purchase_path(@event, @gift, @purchase)
   end
 
   def destroy
@@ -37,10 +41,14 @@ class PurchasesController < ApplicationController
   end
 
   def set_gift
-    @gift = Gift.find(params[:id])
+    @gift = Gift.find(params[:gift_id])
+  end
+
+  def set_event
+    @event = Event.find(params[:event_id])
   end
 
   def purchase_params
-    params.require(:purchase).permit(:total, :payment_method)
+    params.require(:purchase).permit(:payment_method)
   end
 end

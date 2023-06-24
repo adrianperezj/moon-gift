@@ -1,8 +1,7 @@
 <h1>New Purchase</h1>
 
-<!--
-<%= simple_form_for [@user, @purchase] do |f| %>
-  <%= f.input :payment_method, collection: ["Credit Card", "Debit Card"] %>
+
+<%= simple_form_for [@event, @gift, @purchase] do |f| %>
+  <%= f.input :payment_method, collection: ["Credit Card", "Debit Card"], label: "Payment Method:" %>
   <%= f.submit "Submit purchase", class: "btn btn-primary" %>
-<%= end %>
--->
+<% end %>

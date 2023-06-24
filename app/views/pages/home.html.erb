@@ -5,8 +5,10 @@
 
 
 CREATE FORM WITH REDIRECTION TO EVENTS #SHOW
-<%= form_tag(event_path, method: :get) do %>
+<% if Event.all.any? %>
+<%= form_tag(event_path(Event.all.first), method: :get) do %>
   <%= text_field_tag :code, placeholder: "Enter event code" %>
   <%= submit_tag "Search event" %>
+<% end %>
 <% end %>
 <%= link_to 'Create Event', new_event_path(@user), class: 'btn btn-primary' %>

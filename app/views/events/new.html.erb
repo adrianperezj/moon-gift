@@ -9,13 +9,8 @@
 
   <%= form.label :date %>
   <%= form.date_select :date %>
-   <% if @event.errors[:date].any? %>
-    <p class="error"><%= @event.errors[:date].first %></p>
-  <% end %>
 
   <%= form.submit "Create Event" %>
 <% end %>
 
 <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
-
-<%= form_with model: @event, local: true do |form| %>

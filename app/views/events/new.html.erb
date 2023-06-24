@@ -1,6 +1,7 @@
 <h1>Create Event</h1>
 
-<%= form_with model: @event, url: events_path do |form| %>
+<%= form_with model: @event, local: true do |form| %>
+
   <%= form.label :name %>
   <%= form.text_field :name %>
    <% if @event.errors[:name].any? %>
@@ -13,7 +14,16 @@
     <p class="error"><%= @event.errors[:date].first %></p>
   <% end %>
 
-  <%= form.submit "Create Event" %>
+  <div class="field">
+    <%= form.label :event_code %>
+    <%= form.text_field :event_code, readonly: true %>
+  </div>
+
+   <div class="actions">
+    <%= form.submit "Create Event"%>
+  </div>
 <% end %>
 
 <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+
+<%= form_with model: @event, local: true do |form| %>

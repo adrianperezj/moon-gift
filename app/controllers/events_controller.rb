@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_user, only: %i[new create]
+  # before_action :set_user, only: %i[create]
 
   def new
     @event = Event.new
@@ -7,9 +7,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.user = @user
+    @event.user = current_user
     @event.event_code = generate_event_code
-
     if @event.save
       redirect_to event_path(@event), notice: 'Event created successfully!'
     else

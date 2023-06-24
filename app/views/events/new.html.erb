@@ -1,6 +1,6 @@
 <h1>Create Event</h1>
 
-<%= form_with model: @event, url: events_path do |form| %>
+<%= form_with model: @event, url: events_path, data: { turbo: false } do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
    <% if @event.errors[:name].any? %>
@@ -12,7 +12,7 @@
    <% if @event.errors[:date].any? %>
     <p class="error"><%= @event.errors[:date].first %></p>
   <% end %>
-
+r
   <%= form.submit "Create Event" %>
 <% end %>
 

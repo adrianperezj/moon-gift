@@ -24,6 +24,6 @@ class GiftsController < ApplicationController
   end
 
   def gift_params
-    params.require(:gift).permit(:name, :description, :price)
+    params.require(:gift).permit(:name, :description, :price, :photo)
   end
 end

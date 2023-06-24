@@ -9,3 +9,4 @@ CREATE FORM WITH REDIRECTION TO EVENTS #SHOW
   <%= text_field_tag :code, placeholder: "Enter event code" %>
   <%= submit_tag "Search event" %>
 <% end %>
+<%= link_to 'Create Event', new_event_path(@user), class: 'btn btn-primary' %>

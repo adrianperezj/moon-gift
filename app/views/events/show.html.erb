@@ -3,6 +3,7 @@
 <p>Event Code: <%= @event.code %></p>
 
 <h2>Gifts</h2>
+
 <% if @event.gifts.any? %>
   <div class="row">
     <% @event.gifts.each do |gift| %>

@@ -1,10 +1,10 @@
 <h1>Your Events</h1>
 
 <% if @events.any? %>
-  <ul>
+  <ul class="list-group">
     <% @events.each do |event| %>
-      <li>
-        <%= link_to event.name, event_path(event) %>
+      <li class="list-group-item">
+        <%= link_to event.name, event_path(event), class: "text-decoration-none" %>
         <p>Date: <%= event.date %></p>
         <p>Event Code: <%= event.event_code %></p>
       </li>
@@ -14,4 +14,4 @@
   <p>No events found.</p>
 <% end %>
 
-<%= link_to 'Create Event', new_user_event_path(@user) %>
+<%= link_to 'Create Event', new_user_event_path(@user), class: 'btn btn-primary' %>

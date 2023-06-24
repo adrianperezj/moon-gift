@@ -7,4 +7,4 @@
 <%= @purchase.total %>
 <%= @purchase.payment_method %>
 
-<%= link_to "Back to event", user_event_path(current_user, @event) %>
+<%= link_to "Back to event", event_path(@event, code: @event.code) %>

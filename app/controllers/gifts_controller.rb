@@ -11,7 +11,7 @@ class GiftsController < ApplicationController
     @gift = Gift.new(gift_params)
     @gift.event = @event
     if @gift.save
-      redirect_to event_path(@event)
+      redirect_to event_path(@event, code: @event.code)
     else
       render :new, status: :unprocessable_entity
     end

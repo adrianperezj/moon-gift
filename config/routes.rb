@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   end
 end
 
-Rails.application.routes.draw do
-  get 'signup', to: 'users#new'
-  post 'signup', to: 'users#create'
-  get 'login', to: 'users#login'
-  post 'login', to: 'users#authenticate'
-end
+# Rails.application.routes.draw do
+#   get 'signup', to: 'users#new'
+#   post 'signup', to: 'users#create'
+#   get 'login', to: 'users#login'
+#   post 'login', to: 'users#authenticate'
+# end

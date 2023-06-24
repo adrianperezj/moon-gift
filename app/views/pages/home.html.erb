@@ -1,2 +1,11 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+
+
+
+CREATE FORM WITH REDIRECTION TO EVENTS #SHOW
+<%= form_tag(event_path, method: :get) do %>
+  <%= text_field_tag :code, placeholder: "Enter event code" %>
+  <%= submit_tag "Search event" %>
+<% end %>

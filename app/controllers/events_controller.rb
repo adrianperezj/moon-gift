@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  efore_action :set_user, only: %i[new create index]
+  before_action :set_user, only: %i[new create index]
 
   def new
     @event = Event.new
@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    raise
     @event = Event.find(params[:id])
     @gifts = @event.gifts
   end

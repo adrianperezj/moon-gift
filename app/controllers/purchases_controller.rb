@@ -3,11 +3,10 @@ class PurchasesController < ApplicationController
   before_action :set_gift, only: %i[new create]
 
   def index
-    @purchases = Purchase.all
-    prices = @purchases.map do |purchase|
-      purchase.gift.price
-    end
-    @total = prices.sum
+    @purchases = Purchase.where(user: current_user).group(:event)
+    # prices = @purchases.map do |purchase|
+    # purchase.gift.price
+    # end
   end
 
   def show

@@ -1,3 +1,11 @@
-<h1><%= @purchase.gift.name %></h1>
-<p><%= @purchase.payment_method %></p>
-<p><%= @purchase.total %></p>
+<h1>My purchases</h1>
+
+<h2><%= @event.name %></h2>
+<p><%= @event.date %></p>
+
+  <% @purchases.each do |purchase| %>
+    <%= purchase.gift.name %>
+    <%= purchase.gift.price %>
+    <%= @purchase.payment_method %>
+    <%= @purchase.total %>
+  <% end %>

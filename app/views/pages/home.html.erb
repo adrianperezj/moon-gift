@@ -1,11 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="uk-container">
+  <h1 class="uk-heading-medium">Moon Gift</h1>
+  <p>Find me in app/views/pages/home.html.erb</p>
 
-CREATE FORM WITH REDIRECTION TO EVENTS #SHOW
-<% if Event.all.any? %>
-<%= form_tag(event_path(Event.all.first), method: :get) do %>
-  <%= text_field_tag :code, placeholder: "Enter event code" %>
-  <%= submit_tag "Search event" %>
-<% end %>
-<% end %>
-<%= link_to 'Create Event', new_event_path(@user), class: 'btn btn-primary' %>
+  <% if Event.all.any? %>
+    <%= form_tag(event_path(Event.all.first), method: :get, class: "uk-form-stacked") do %>
+      <div class="uk-margin">
+        <%= text_field_tag :code, placeholder: "Enter event code", class: "uk-input" %>
+      </div>
+      <%= submit_tag "Search Event", class: "uk-button uk-button-primary" %>
+    <% end %>
+  <% end %>
+
+  <%= link_to 'Create Event', new_event_path(@user), class: 'uk-button uk-button-primary' %>
+</div>

@@ -8,17 +8,25 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @event.event_code = generate_event_code
+    @event.code = generate_event_code
     if @event.save
-      redirect_to event_path(@event), notice: 'Event created successfully!'
+      redirect_to event_path(@event, code: @event.code), notice: 'Event created successfully!'
     else
       render :new
     end
   end
 
   def show
-    @event = Event.find(params[:id])
-    @gifts = @event.gifts
+    @event = Event.find_by(code: params[:code])
+    if @event.nil?
+      redirect_to root_path, notice: 'Event not found'
+    else
+      @gifts = @event.gifts
+    end
+  end
+
+  def index
+    @events = @user.events
   end
 
   private

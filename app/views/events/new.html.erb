@@ -9,10 +9,7 @@
 
   <%= form.label :date %>
   <%= form.date_select :date %>
-   <% if @event.errors[:date].any? %>
-    <p class="error"><%= @event.errors[:date].first %></p>
-  <% end %>
-r
+
   <%= form.submit "Create Event" %>
 <% end %>
 

@@ -1,0 +1,17 @@
+<h1>Your Events</h1>
+
+<% if @events.any? %>
+  <ul>
+    <% @events.each do |event| %>
+      <li>
+        <%= link_to event.name, event_path(event) %>
+        <p>Date: <%= event.date %></p>
+        <p>Event Code: <%= event.event_code %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No events found.</p>
+<% end %>
+
+<%= link_to 'Create Event', new_user_event_path(@user) %>

@@ -1,20 +1,24 @@
 class EventsController < ApplicationController
-  before_action :set_user, only: [:new]
+  # before_action :set_user, only: %i[create]
 
   def new
     @event = Event.new
   end
 
   def create
-    @event.user = @user
     @event = Event.new(event_params)
+    @event.user = current_user
     @event.event_code = generate_event_code
-
     if @event.save
       redirect_to event_path(@event), notice: 'Event created successfully!'
     else
       render :new
     end
+  end
+
+  def show
+    @event = Event.find(params[:id])
+    @gifts = @event.gifts
   end
 
   private
@@ -25,7 +29,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date)
+    params.require(:event).permit(:name, :date, :message, :event_code)
   end
 
   def generate_event_code

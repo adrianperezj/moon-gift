@@ -1,10 +1,28 @@
-<!--<h1>My purchases</h1>
-
+<h1>My purchases</h1>
 <h2><%= @event.name %></h2>
-<ul>
-  <% @purchases.each do |purchase| %>
-    <li><%= purchase.gift.name %></li>
-    <li><%= purchase.gift.price %></li>
-  <% end %>
-</ul>
--->
+
+<% if @purchases.any? %>
+  <div class="row">
+    <% @purchases.each do |purchase| %>
+      <div class="col-md-4">
+        <div class="card">
+          <% if purchase.gift.photo.attached? %>
+            <%= image_tag purchase.gift.photo, class: "card-img-top" %>
+          <% else %>
+            <%= image_tag "placeholder-image.jpg", class: "card-img-top" %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= purchase.gift.name %></h5>
+            <p class="card-text"><%= purchase.gift.description %></p>
+            <p class="card-text">Price: <%= purchase.gift.price %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% else %>
+  <p>No purchases available.</p>
+<% end %>
+
+<%= link_to "Back to home", root_path(@home) %>
+<%= link_to "Back to event", event_path(@event, code: @event.code) %>

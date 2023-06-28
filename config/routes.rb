@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :events do
-    resources :gifts, only: [:show,:index,:new, :create] do
-      resources :purchases, only: [:new, :create, :show]
+    resources :gifts, only: %i[show index new create] do
+      resources :purchases, only: %i[index new create show]
     end
   end
 
-  resources :gifts, only: [:edit, :update, :destroy]
+  resources :gifts, only: %i[edit update destroy]
 end
 
 # Rails.application.routes.draw do

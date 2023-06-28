@@ -37,7 +37,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date, :message, :event_code)
+    params.require(:event).permit(:name, :date, :message, :code)
   end
 
   def generate_event_code

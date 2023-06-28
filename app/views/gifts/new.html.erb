@@ -1,11 +1,15 @@
-<h1>New Gift</h1>
+<div class="container my-3">
+  <h1>New Gift</h1>
 
-<p>
-  <%= simple_form_for [@event, @gift] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-    <%= f.input :photo, as: :file %>
-    <%= f.button :submit, class: "btn btn-primary" %>
-  <% end %>
-</p>
+  <div class="card rounded shadow p-5">
+    <p>
+      <%= simple_form_for [@event, @gift] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :price %>
+        <%= f.input :photo, as: :file, class: "btn btn-primary" %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </p>
+  </div>
+</div>

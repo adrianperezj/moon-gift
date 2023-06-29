@@ -1,8 +1,20 @@
-<div class="container my-5">
-  <div class="card-trip">
-    <h1> Regalo</h1>
-    <p>Nombre: <%= @gift.name %></p>
-    <p>Descripción: <%= @gift.description %></p>
-    <p>Precio: <%= @gift.price %></p>
+
+<div class="card-trip my-3">
+  <% if @gift.photo.attached? %>
+    <%= image_tag @gift.photo, class: "card-img-top mx-2 my-2" %>
+  <% else %>
+    <%= image_tag "placeholder-image.jpg", class: "card-img-top" %>
+  <% end %>
+  <div class="card-trip-infos">
+    <div>
+      <h2> <%= @gift.name %></h2>
+      <p> <%= @gift.description %></p>
+    </div>
+    <h2 class="card-trip-pricing"> <%= @gift.price %> </h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+  <div class="content-jutify-right my-2 mx-2">
+    <%= link_to 'Buy Gift', new_event_gift_purchase_path(@event, @gift), class: 'btn btn-primary' %>
+      <%= link_to 'Edit Gift', edit_event_gift_path(@event, @gift), class: 'btn btn-primary' %>
   </div>
 </div>

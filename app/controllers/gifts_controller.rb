@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-  before_action :set_event, only: [:index, :new, :create]
+  before_action :set_event, only: [:new, :create, :show, :edit]
 
 # Adrian quitamos el index de gifts porque no lo necesitamos, ya que los gifts se muestran en el show de events.
 
@@ -11,7 +11,7 @@ class GiftsController < ApplicationController
     @gift = Gift.new(gift_params)
     @gift.event = @event
     if @gift.save
-      redirect_to event_path(@event, code: @event.code)
+      redirect_to event_path(@event, code: @event.code), notice: 'Gift created successfully!'
     else
       render :new, status: :unprocessable_entity
     end
@@ -19,6 +19,20 @@ class GiftsController < ApplicationController
 
   def show
     @gift = Gift.find(params[:id])
+  end
+
+  def edit
+    @gift = Gift.find(params[:id])
+  end
+
+  def update
+    @gift = Gift.find(params[:id])
+    @gift.event = @event
+    if @gift.update(gift_params)
+      redirect_to event_gift_path(@event, @gift), notice: 'Gift updated successfully!'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private

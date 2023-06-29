@@ -6,8 +6,10 @@
 
 .card-trip > img {
   height: 200px;
-  width: 100%;
+  width: 200px;
   object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 
 .card-trip h2 {

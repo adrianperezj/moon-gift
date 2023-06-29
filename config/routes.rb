@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :events do
-    resources :gifts, only: [:show,:index,:new, :create] do
+    resources :gifts, only: [:show,:index,:new, :create, :edit, :update] do
       resources :purchases, only: [:new, :create, :show]
     end
   end

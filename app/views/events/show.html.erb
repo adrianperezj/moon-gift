@@ -27,6 +27,7 @@
 <% else %>
   <p>No gifts available.</p>
 <% end %>
-
-<%= link_to 'Create Gift', new_event_gift_path(@event), class: 'btn btn-primary' %>
-<%= link_to 'Back to Home', root_path, class: 'btn btn-primary' %>
+<div class="container my-5">
+  <%= link_to 'Create Gift', new_event_gift_path(@event), class: 'btn btn-primary' %>
+  <%= link_to 'Back to Home', root_path, class: 'btn btn-primary' %>
+</div>

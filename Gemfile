@@ -82,3 +82,5 @@ gem "cloudinary"
 
 gem 'faker'
 
+gem 'spring'
+

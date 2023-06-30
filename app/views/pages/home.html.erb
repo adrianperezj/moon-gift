@@ -1,15 +1,51 @@
-<div class="uk-container">
-  <h1 class="uk-heading-medium">Moon Gift</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moon Gift - Create and Share Events</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
-  <% if Event.all.any? %>
-    <%= form_tag(event_path(Event.all.first), method: :get, class: "uk-form-stacked") do %>
-      <div class="uk-margin">
-        <%= text_field_tag :code, placeholder: "Enter event code", class: "uk-input" %>
-      </div>
-      <%= submit_tag "Search Event", class: "uk-button uk-button-primary" %>
-    <% end %>
-  <% end %>
+</head><!-- Navigation bar -->
 
-  <%= link_to 'Create Event', new_event_path(@user), class: 'uk-button uk-button-primary' %>
-</div>
+    <!-- Banner -->
+    <section class="jumbotron text-center section-spacing">
+        <div class="container">
+            <h1>Welcome to Moon Gift</h1>
+            <p>Create and Share Events. Add Gifts. Get Surprised!</p>
+        </div>
+    </section>
+
+    <!-- Search bar -->
+    <section class="container text-center section-spacing">
+        <h2>Search For Event</h2>
+        <p>Discover and Fulfill Your Loved Ones' Wishes</p>
+         <div class="row justify-content-center">
+              <div class="col-md-4">
+                  <% if Event.all.any? %>
+                    <%= form_tag(event_path(Event.all.first), method: :get, class: "form-inline") do %>
+                      <div class="uk-margin">
+                        <%= text_field_tag :code, "Search for an event", class: "form-control mr-sm-2" %>
+                      </div>
+                      <%= submit_tag "Search", class: "btn btn-dark my-2 my-sm-0" %>
+                    <% end %>
+                  <% end %>
+              </div>
+          </div>
+    </section>
+
+    <section class="container text-center section-spacing">
+    </section>
+
+    <!-- Call-to-action (CTA) -->
+    <section class="container text-center section-spacing">
+        <h2>or Create Your Own Event</h2>
+        <p>Organize a special occasion and let others gift you with joy!</p>
+        <%= link_to 'Get Started', new_event_path(@user), class: 'btn btn-dark my-2 my-sm-0' %>
+    </section>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

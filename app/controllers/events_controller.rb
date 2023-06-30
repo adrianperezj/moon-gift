@@ -26,7 +26,11 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = @user.events
+    @events = Event.all
+  end
+
+  def my_events
+    @events = current_user.events
   end
 
   private

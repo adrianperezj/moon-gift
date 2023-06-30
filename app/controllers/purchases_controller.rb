@@ -1,18 +1,13 @@
 class PurchasesController < ApplicationController
   # before_action :set_user, only: %i[new create]
-  before_action :set_gift, only: %i[new create show index]
-  before_action :set_event, only: %i[new create show index]
+  before_action :set_gift, only: %i[new create show]
+  before_action :set_event, only: %i[new create show]
 
-<<<<<<< HEAD
-  def user_purchases
-    @purchases = current_user.purchases
-=======
   def index
     @purchases = Purchase.where(user: current_user).group(@gifts)
     # prices = @purchases.map do |purchase|
     # purchase.gift.price
     # end
->>>>>>> 9eca3b458de28089132602e1cb1fe2834cd1a130
   end
 
   def show

@@ -1,9 +1,21 @@
+
+<div class="banner">
+    <% if @event.image.attached? %>
+      <%= cl_image_tag @event.image.key, class: "banner-image" %>
+    <% else %>
+      <p class="banner-placeholder">No image available</p>
+    <% end %>
+</div>
+
 <h1><%= @event.name %></h1>
+<div>
 <p>Date: <%= @event.date %></p>
 <p>Event Code: <%= @event.code %></p>
+</div>
 
 <h2>Gifts</h2>
 
+<div class="container my-5">
 <% if @event.gifts.any? %>
   <div class="row">
     <% @event.gifts.each do |gift| %>
@@ -27,7 +39,9 @@
 <% else %>
   <p>No gifts available.</p>
 <% end %>
+</div>
+
 <div class="container my-5">
-  <%= link_to 'Create Gift', new_event_gift_path(@event), class: 'btn btn-primary' %>
-  <%= link_to 'Back to Home', root_path, class: 'btn btn-primary' %>
+  <%= link_to 'Create Gift', new_event_gift_path(@event), class: 'btn btn-dark mt-2' %>
+  <%= link_to 'Back to Home', root_path, class: 'btn btn-outline-dark mt-2' %>
 </div>

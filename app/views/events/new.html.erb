@@ -1,16 +1,27 @@
-<h1>Create Event</h1>
+<div class="container">
+  <h1>Create Event</h1>
 
-<%= form_with model: @event, url: events_path, data: { turbo: false } do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-   <% if @event.errors[:name].any? %>
-    <p class="error"><%= @event.errors[:name].first %></p>
-  <% end %>
+  <%= form_with model: @event, url: events_path, data: { turbo: false } do |form| %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+    <% if @event.errors[:name].any? %>
+      <p class="error"><%= @event.errors[:name].first %></p>
+    <% end %>
+  </div>
 
-  <%= form.label :date %>
-  <%= form.date_select :date %>
+  <div class="form-group">
+    <%= form.label :date %>
+    <%= form.date_select :date, class: "form-control" %>
+  </div>
 
-  <%= form.submit "Create Event" %>
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= form.file_field :image, class: "form-control-file" %>
+  </div>
+
+  <%= form.submit "Create Event", class: "btn btn-dark" %>
 <% end %>
 
-<%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+  <%= link_to 'Back', root_path, class: 'btn btn-outline-dark mt-2' %>
+</div>

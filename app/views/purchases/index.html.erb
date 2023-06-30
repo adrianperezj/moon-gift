@@ -9,7 +9,7 @@
           <% if purchase.gift.photo.attached? %>
             <%= image_tag purchase.gift.photo, class: "card-img-top" %>
           <% else %>
-            <%= image_tag "placeholder-image.jpg", class: "card-img-top" %>
+            <%= image_tag "logo.png", class: "card-img-top" %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= purchase.gift.name %></h5>

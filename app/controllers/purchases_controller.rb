@@ -4,11 +4,8 @@ class PurchasesController < ApplicationController
   before_action :set_event, only: %i[new create show]
 
 
-  def index
-    @purchases = Purchase.where(user: current_user).group(:event)
-    # prices = @purchases.map do |purchase|
-    # purchase.gift.price
-    # end
+  def user_purchases
+    @purchases = current_user.purchases
   end
 
   def show

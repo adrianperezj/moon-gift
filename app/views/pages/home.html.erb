@@ -1,6 +1,5 @@
 <div class="uk-container">
   <h1 class="uk-heading-medium">Moon Gift</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
 
   <% if Event.all.any? %>
     <%= form_tag(event_path(Event.all.first), method: :get, class: "uk-form-stacked") do %>
@@ -10,6 +9,7 @@
       <%= submit_tag "Search Event", class: "uk-button uk-button-primary" %>
     <% end %>
   <% end %>
-
-  <%= link_to 'Create Event', new_event_path(@user), class: 'uk-button uk-button-primary' %>
+  <div>
+    <%= link_to 'Create Event', new_event_path(@user), class: 'uk-button uk-button-primary' %>
+  </div>
 </div>

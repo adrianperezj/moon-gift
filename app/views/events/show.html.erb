@@ -7,41 +7,52 @@
     <% end %>
 </div>
 
+<div class="container my-5">
 <h1><%= @event.name %></h1>
-<div>
-<p>Date: <%= @event.date %></p>
-<p>Event Code: <%= @event.code %></p>
+    <div>
+    <p>Date <%= @event.date %></p>
+    <p>Event Code <%= @event.code %></p>
+    </div>
 </div>
 
-<h2>Gifts</h2>
-
 <div class="container my-5">
-<% if @event.gifts.any? %>
-  <div class="row">
-    <% @event.gifts.each do |gift| %>
-      <div class="col-md-4">
-        <div class="card">
-          <% if gift.photo.attached? %>
-            <%= image_tag gift.photo, class: "card-img-top" %>
-          <% else %>
-            <%= image_tag "logo.png", class: "card-img-top" %>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><%= gift.name %></h5>
-            <p class="card-text"><%= gift.description %></p>
-            <p class="card-text">Price: <%= gift.price %></p>
-            <%= link_to 'Buy Gift', new_event_gift_purchase_path(@event, gift), class: 'btn btn-primary' %>
+  <h2 class="mb-4">Gifts</h2>
+  <%= form_with(url: event_gifts_path(@event), method: 'get', local: true) do |form| %>
+    <div class="input-group mb-3">
+      <%= form.search_field :search, class: 'form-control', placeholder: 'Search gifts by name' %>
+      <div class="input-group-append">
+        <%= form.submit 'Search', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @gifts.any? %>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% @gifts.each do |gift| %>
+        <div class="col mb-4">
+          <div class="card h-100">
+            <% if gift.photo.attached? %>
+              <%= image_tag gift.photo, class: "card-img-top" %>
+            <% else %>
+              <%= image_tag "logo.png", class: "card-img-top" %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= gift.name %></h5>
+              <p class="card-text"><%= gift.description %></p>
+              <p class="card-text">Price: <%= gift.price %></p>
+              <%= link_to 'Buy Gift', new_event_gift_purchase_path(@event, gift), class: 'btn btn-primary' %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <p>No gifts available.</p>
-<% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No gifts found.</p>
+  <% end %>
 </div>
 
+
 <div class="container my-5">
-  <%= link_to 'Create Gift', new_event_gift_path(@event), class: 'btn btn-dark mt-2' %>
-  <%= link_to 'Back to Home', root_path, class: 'btn btn-outline-dark mt-2' %>
+  <%= link_to 'Create Gift', new_event_gift_path(@event), class: 'btn btn-primary' %>
+  <%= link_to 'Back to Home', root_path, class: 'btn btn-secondary' %>
 </div>

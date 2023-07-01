@@ -13,10 +13,3 @@ Rails.application.routes.draw do
   get 'my_events', to: 'events#my_events'
   get 'my_events/:id', to: 'events#my_event', as: :my_event
 end
-
-# Rails.application.routes.draw do
-#   get 'signup', to: 'users#new'
-#   post 'signup', to: 'users#create'
-#   get 'login', to: 'users#login'
-#   post 'login', to: 'users#authenticate'
-# end

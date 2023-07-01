@@ -1,7 +1,39 @@
-<h1>New Purchase</h1>
+<div class="main-container">
+  <h1 class="new-purchase-title">New Purchase</h1>
 
+      <div class="card-payment">
+      <!--<img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />-->
+        <div class="card-payment-infos">
+          <div class="icon-tc"><i class="fa-solid fa-credit-card fa-2xl" style="font-size: 2.5em; vertical-align: -0.65em; color: #57038b; margin-left: 77px;"></i></div>
+          <%= simple_form_for [@event, @gift, @purchase] do |f| %>
+            <%= f.input :payment_method, collection: ["", "Credit Card", "Debit Card"], label: "Payment Method", label_html: {class: "payment-label"}, input_html: {class: "payment-input", id: "payment-method-select"} %>
+            <div id="credit-card-info" style="display:none;">
+              <%= image_tag "TC.png" %>
+            </div>
+            <div id="debit-card-info" style="display:none;">
+              <%= image_tag "TD.png" %>
+            </div>
+            <div class="total-amount">Total amount: $ <%= @gift.price %></div>
+        </div>
+      </div>
+            <div class="btn-submit">
+              <%= f.submit "Submit purchase", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+</div>
 
-<%= simple_form_for [@event, @gift, @purchase] do |f| %>
-  <%= f.input :payment_method, collection: ["Credit Card", "Debit Card"], label: "Payment Method:" %>
-  <%= f.submit "Submit purchase", class: "btn btn-primary" %>
-<% end %>
+<script>
+  document.getElementById("payment-method-select").addEventListener("change", function() {
+    var selectedOption = this.value;
+    if (selectedOption === "Credit Card") {
+      document.getElementById("credit-card-info").style.display = "block";
+      document.getElementById("debit-card-info").style.display = "none";
+    } else if (selectedOption === "Debit Card") {
+      document.getElementById("credit-card-info").style.display = "none";
+      document.getElementById("debit-card-info").style.display = "block";
+    } else {
+      document.getElementById("credit-card-info").style.display = "none";
+      document.getElementById("debit-card-info").style.display = "none";
+    }
+  });
+</script>

@@ -1,0 +1,110 @@
+.main-container {
+  width: 900px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+@media (max-width: 920px) {
+  /* For a screen < 720px, this CSS will be read */
+  .main-container {
+    width: 500px;
+  }
+}
+
+.new-purchase-title {
+  color: #57038b;
+  text-align: center;
+}
+
+.card-payment {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  height: 350px;
+  width: 400px;
+  padding: 15px;
+  background: #f8edff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  align-items: center;
+  vertical-align: auto;
+}
+
+.card-payment-infos {
+  padding: 10px;
+  align-content: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.icon-tc {
+  height: 2.5em;
+  align-items: center;
+}
+
+/*.fa-solid {
+  font-size: 2.5em;
+  vertical-align: -0.65em;
+  color: #57038b;
+  margin-left: 77px;
+}*/
+
+.payment-label {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.payment-input {
+  box-sizing: 50px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+#payment-method-select {
+  text-align: center;
+}
+
+#credit-card-info {
+  text-align: center;
+}
+
+#debit-card-info {
+  text-align: center;
+}
+
+.card-payment img {
+  height: 80px;
+  text-align: center;
+  margin: auto;
+}
+
+.total-amount {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.btn-submit {
+  display: flex;
+  margin: 0 auto;
+  height: 50px;
+  width: 400px;
+  padding-top: 5px;
+  background-color: #57038b;
+  border-color: #57038b;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  margin: 0 auto;
+  margin-bottom: 5px;
+}

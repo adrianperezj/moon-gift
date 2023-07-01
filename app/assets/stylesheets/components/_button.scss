@@ -42,7 +42,9 @@
 
 .btn-primary {
   color: white;
-  padding: 8px 24px;
+  height: 40px;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
   border-radius: 5px !important;
   font-weight: bold;
   background: $purple !important;

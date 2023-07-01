@@ -5,44 +5,41 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
-
 </head><!-- Navigation bar -->
-
+<body>
     <!-- Banner -->
-    <section class="jumbotron text-center section-spacing">
-        <div class="container">
-            <h1>Welcome to Moon Gift</h1>
-            <p>Create and Share Events. Add Gifts. Get Surprised!</p>
-        </div>
+    <section class="banner-container">
+      <div class="banner-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path 'banner-home.png' %>)">
+        <h1 class="welcome">Welcome to Moon Gift</h1>
+      </div>
+        <p id="slogan">Create and Share Events. Add Gifts. Get Surprised!</p>
     </section>
 
-    <!-- Search bar -->
-    <section class="container text-center section-spacing">
-        <h2>Search For Event</h2>
-        <p>Discover and Fulfill Your Loved Ones' Wishes</p>
-         <div class="row justify-content-center">
-              <div class="col-md-4">
-                  <% if Event.all.any? %>
-                    <%= form_tag(event_path(Event.all.first), method: :get, class: "form-inline") do %>
-                      <div class="uk-margin">
-                        <%= text_field_tag :code, "Search for an event", class: "form-control mr-sm-2" %>
-                      </div>
-                      <%= submit_tag "Search", class: "btn btn-dark my-2 my-sm-0" %>
+    <div class="search-create">
+      <section class="container text-center section-spacing">
+          <h2>Search For Event</h2>
+          <p>Discover and Fulfill Your Loved Ones' Wishes</p>
+          <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <% if Event.all.any? %>
+                      <%= form_tag(event_path(Event.all.first), method: :get, class: "form-inline") do %>
+                        <div class="uk-margin">
+                          <%= text_field_tag :code, "Search for an event", class: "form-control mr-sm-2" %>
+                        </div>
+                        <%= submit_tag "Search", class: "btn btn-primary my-2 my-sm-0" %>
+                      <% end %>
                     <% end %>
-                  <% end %>
-              </div>
-          </div>
-    </section>
+                </div>
+            </div>
+      </section>
 
-    <section class="container text-center section-spacing">
-    </section>
 
-    <!-- Call-to-action (CTA) -->
-    <section class="container text-center section-spacing">
-        <h2>or Create Your Own Event</h2>
-        <p>Organize a special occasion and let others gift you with joy!</p>
-        <%= link_to 'Get Started', new_event_path(@user), class: 'btn btn-dark my-2 my-sm-0' %>
-    </section>
+      <section class="container text-center section-spacing">
+          <h2>or Create Your Own Event</h2>
+          <p>Organize a special occasion and let others gift you with joy!</p>
+          <%= link_to 'Get Started', new_event_path(@user), class: 'btn btn-primary my-2 my-sm-0' %>
+      </section>
+    </div>
 
 
     <!-- Bootstrap JS -->

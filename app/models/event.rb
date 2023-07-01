@@ -4,4 +4,6 @@ class Event < ApplicationRecord
   has_one_attached :image
   validates :name, presence: true
   validates :date, presence: true
+
+  include Pundit
 end

@@ -7,4 +7,6 @@ class Gift < ApplicationRecord
   validates :price, presence: true
   validates :description, presence: true
   validates :event_id, presence: true
+
+  include Pundit
 end

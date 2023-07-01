@@ -84,3 +84,4 @@ gem 'faker'
 
 gem 'spring'
 
+gem "pundit"

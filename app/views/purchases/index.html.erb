@@ -1,9 +1,12 @@
-<div class="purchases-container">
-  <h1>My purchases</h1>
+<div class="main-container">
 
-  <% if current_user.purchases.any? %>
+  <div class="h-titles">
+    <h1 class="new-purchase-title">My purchases</h1>
+  </div>
+
+  <% if @purchases.any? %>
     <div class="row">
-      <% current_user.purchases.each do |purchase| %>
+      <% @purchases.each do |purchase| %>
         <div class="col-md-4">
           <div class="card">
             <% if purchase.gift.photo.attached? %>
@@ -20,9 +23,10 @@
         </div>
       <% end %>
     </div>
-  <% else %>
+    <% else %>
     <p>No purchases available.</p>
   <% end %>
 
-  <%= link_to "Back to home", root_path %>
+  <div class="btn-links d-flex justify-content-between">
+    <%= link_to "Back to home", root_path(@home), class: "btn btn-primary" %>
 </div>

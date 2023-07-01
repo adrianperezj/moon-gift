@@ -6,7 +6,16 @@
       <div class="col-md-4 mb-4">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title"><%= link_to event.name, event_path(event), class: "text-decoration-none event-link" %></h5>
+            <div class="card-img-container">
+              <% if event.image.attached? %>
+                <%= cl_image_tag event.image.key, class: "card-img-top responsive-image" %>
+              <% else %>
+                <%= image_tag "logo.png", class: "card-img-top responsive-image" %>
+              <% end %>
+            </div>
+            <h5 class="card-title">
+              <%= link_to event.name, event_path(event), class: "text-decoration-none event-link" %>
+            </h5>
             <p class="card-text font-weight-bold">Date: <%= event.date %></p>
             <p class="card-text font-weight-bold">Event Code: <%= event.code %></p>
           </div>

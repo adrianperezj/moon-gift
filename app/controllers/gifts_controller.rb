@@ -1,8 +1,6 @@
 class GiftsController < ApplicationController
   before_action :set_event, only: [:new, :create, :show, :edit]
 
-# Adrian quitamos el index de gifts porque no lo necesitamos, ya que los gifts se muestran en el show de events.
-
   def new
     @gift = Gift.new
   end
@@ -35,10 +33,24 @@ class GiftsController < ApplicationController
     end
   end
 
+  def index
+    @event = Event.find(params[:event_id])
+    if @event
+      if params[:search].present?
+        @gifts = @event.gifts.where("name ILIKE ?", "%#{params[:search]}%")
+      else
+        @gifts = @event.gifts
+      end
+    else
+      redirect_to root_path, notice: 'Event not found'
+    end
+  end
+
   private
 
   def set_event
     @event = Event.find(params[:event_id])
+    redirect_to root_path, notice: 'Event not found' unless @event
   end
 
   def gift_params

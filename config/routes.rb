@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :events do
-    resources :gifts, only: %i[show index new create] do
+    resources :gifts, only: %i[show index new create edit update] do
       resources :purchases, only: %i[index new create show]
     end
   end
 
-  resources :gifts, only: %i[edit update destroy]
+  resources :gifts, only: %i[edit update ]
+
+  delete '/events/:event_id/gifts/:id', to: 'gifts#destroy', as: 'event_gift_destroy'
 end
 
 # Rails.application.routes.draw do

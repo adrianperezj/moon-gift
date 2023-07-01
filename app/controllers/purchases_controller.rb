@@ -3,24 +3,21 @@ class PurchasesController < ApplicationController
   before_action :set_gift, only: %i[new create show index]
   before_action :set_event, only: %i[new create show index]
 
-<<<<<<< HEAD
-  def user_purchases
-    @purchases = current_user.purchases
-=======
   def index
-    @purchases = Purchase.where(user: current_user).group(@gifts)
+    @purchases = policy_scope(Purchase)
     # prices = @purchases.map do |purchase|
     # purchase.gift.price
     # end
->>>>>>> 9eca3b458de28089132602e1cb1fe2834cd1a130
   end
 
   def show
     @purchase = Purchase.find(params[:id])
+    authorize @purchase
   end
 
   def new
     @purchase = Purchase.new
+    authorize @purchase
   end
 
   def create
@@ -30,6 +27,7 @@ class PurchasesController < ApplicationController
     @purchase.total = @gift.price
     @purchase.save
     redirect_to event_gift_purchase_path(@event, @gift, @purchase)
+    authorize @purchase
   end
 
   def destroy

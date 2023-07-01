@@ -8,7 +8,7 @@
   <div class="row">
     <% @event.gifts.each do |gift| %>
       <div class="col-md-4">
-        <div class="card">
+        <div class="card mx-3 my-3">
           <% if gift.photo.attached? %>
             <%= image_tag gift.photo, class: "card-img-top" %>
           <% else %>

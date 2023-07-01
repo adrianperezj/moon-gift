@@ -3,12 +3,14 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    authorize @event
   end
 
   def create
     @event = Event.new(event_params)
     @event.user = current_user
     @event.code = generate_event_code
+    authorize @event
     if @event.save
       redirect_to event_path(@event, code: @event.code), notice: 'Event created successfully!'
     else
@@ -18,6 +20,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by(code: params[:code])
+    authorize @event
     if @event.nil?
       redirect_to root_path, notice: 'Event not found'
     else
@@ -26,7 +29,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = @user.events
+    @events = policy_scope(Event)
   end
 
   private

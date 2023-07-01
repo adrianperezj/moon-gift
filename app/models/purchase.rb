@@ -4,3 +4,7 @@ class Purchase < ApplicationRecord
 
   include Pundit
 end
+
+class Purchase < ApplicationRecord
+  validates :payment_method, inclusion: { in: ["Credit Card", "Debit Card"] }
+end

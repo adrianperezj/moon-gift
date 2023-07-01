@@ -19,17 +19,30 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(code: params[:code])
+    if params[:code].present?
+      @event = Event.find_by(code: params[:code])
+    else
+      @event = Event.find(params[:id])
+    end
     authorize @event
+
     if @event.nil?
       redirect_to root_path, notice: 'Event not found'
     else
-      @gifts = @event.gifts
+      if params[:search].present?
+        @gifts = @event.gifts.where("name ILIKE ? OR code ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+      else
+        @gifts = @event.gifts
+      end
     end
   end
 
   def index
     @events = policy_scope(Event)
+  end
+
+  def my_events
+    @events = current_user.events
   end
 
   private
@@ -40,7 +53,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date, :message, :code)
+    params.require(:event).permit(:name, :date, :image, :code)
   end
 
   def generate_event_code

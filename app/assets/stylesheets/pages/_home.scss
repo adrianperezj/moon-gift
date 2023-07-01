@@ -1,1 +1,47 @@
-// Specific CSS for your home-page
+.banner-container {
+  width: 1110px;
+  height: 500;
+}
+
+.banner-home {
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.welcome {
+  color: white;
+  font-size: 55px;
+  font-weight: bold;
+  margin-right: 70px;
+}
+
+#slogan {
+  color: #57038b;
+  font-size: 30px;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom:50px;
+}
+
+.search-create {
+  width: 1110px;
+  padding: 10px;
+  align-items: center;
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  height: 150px !important;
+  align-items: center;
+  align-content: center;
+}
